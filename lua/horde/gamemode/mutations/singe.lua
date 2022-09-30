@@ -7,7 +7,8 @@ MUTATION.Hooks = {}
 MUTATION.Hooks.Horde_OnSetMutation = function(ent, mutation)
     if mutation == "singe" then
         local c = ent:GetColor()
-        ent:SetColor(Color(125, 50, 50))
+    --    ent:SetColor(Color(125, 50, 50))
+		ent:SetMaterial("models/flesh")
         ent:Ignite(9999999)
     end
 end
