@@ -1,5 +1,5 @@
 MUTATION.PrintName = "Singe"
-MUTATION.Description = "Tinted red and ignited. \nDamage builds up Ignite. Immune to Fire damage. \nOnly randomly occurs starting from wave 6."
+MUTATION.Description = "Material set to flesh and ignited. \nDamage builds up Ignite. Immune to Fire damage. \nOnly randomly occurs starting from wave 6."
 MUTATION.Wave = 6
 
 MUTATION.Hooks = {}
