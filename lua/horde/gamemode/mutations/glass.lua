@@ -1,5 +1,5 @@
 MUTATION.PrintName = "Glass"
-MUTATION.Description = "Material set to glass. \n50% increase in damage dealt not a boss and 50% increase in damage taken. 25% damage boost and damage received instead if a boss. \nDamage inflicts Bleeding. Only randomly occurs starting from wave 6."
+MUTATION.Description = "Material set to glass. \n50% increase in damage dealt and 50% increase in damage taken if not a boss. If a boss, then 25% damage boost and damage received instead. \nDamage inflicts Bleeding. Only randomly occurs starting from wave 6."
 MUTATION.Wave = 6
 
 MUTATION.Hooks = {}
