@@ -1,6 +1,6 @@
 MUTATION.PrintName = "Wall"
-MUTATION.Description = "Material set to brick. \n75% decrease in physical damage taken, but 50% increase in blast and ice damage taken. \nOnly randomly occurs starting from wave 3."
-MUTATION.Wave = 3
+MUTATION.Description = "Material set to brick. 50% decrease in physical damage taken, \nbut 50% increase in blast and ice damage taken if not a boss. \nBosses only get 25% physical resist but no Blast and Cold weakness. Only randomly occurs starting from wave 6."
+MUTATION.Wave = 6
 
 MUTATION.Hooks = {}
 
@@ -13,9 +13,13 @@ end
 hook.Add("EntityTakeDamage", "Horde_WallTakeDamage", function (target, dmg)
     if not target:IsValid() then return end
     if target:IsNPC() and target:Horde_HasMutation("wall") and (dmg:IsDamageType(DMG_BULLET) or dmg:IsDamageType(DMG_SNIPER) or dmg:IsDamageType(DMG_BUCKSHOT) or dmg:IsDamageType(DMG_CLUB) or dmg:IsDamageType(DMG_SLASH) or dmg:IsDamageType(DMG_GENERIC) or dmg:IsDamageType(DMG_CRUSH) or dmg:IsDamageType(DMG_SONIC)) then
-	dmg:ScaleDamage(0.25)
+if not target:Horde_GetBossProperties() then
+	dmg:ScaleDamage(0.5)
+	else
+	dmg:ScaleDamage(0.75)
 end
-    if target:IsNPC() and target:Horde_HasMutation("wall") and (dmg:IsDamageType(DMG_BLAST) or dmg:IsDamageType(DMG_MISSILEDEFENSE) or dmg:IsDamageType(DMG_REMOVENORAGDOLL)) then
+end
+    if target:IsNPC() and target:Horde_HasMutation("wall") and not target:Horde_GetBossProperties() and (dmg:IsDamageType(DMG_BLAST) or dmg:IsDamageType(DMG_MISSILEDEFENSE) or dmg:IsDamageType(DMG_REMOVENORAGDOLL)) then
 	dmg:ScaleDamage(1.5)
 end
 end)

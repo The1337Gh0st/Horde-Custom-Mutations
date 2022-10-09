@@ -1,5 +1,5 @@
 MUTATION.PrintName = "Glass"
-MUTATION.Description = "Material set to glass. \n50% increase in damage dealt and 50% increase in damage taken if not a boss. If a boss, then 25% damage boost and damage received instead. \nDamage inflicts Bleeding. Only randomly occurs starting from wave 6."
+MUTATION.Description = "Material set to glass. \n50% increase in damage dealt and 25% increase in damage taken if not a boss. If a boss, then 25% damage boost instead. \nDamage inflicts Bleeding. Only randomly occurs starting from wave 6."
 MUTATION.Wave = 6
 
 MUTATION.Hooks = {}
@@ -25,9 +25,9 @@ hook.Add("EntityTakeDamage", "Horde_GlassTakeDamage", function (target, dmg)
     if not target:IsValid() then return end
     if target:IsNPC() and target:Horde_HasMutation("glass") then
 	if not target:Horde_GetBossProperties() then
-		dmg:ScaleDamage(1.5)
-		else
 		dmg:ScaleDamage(1.25)
+		else
+		dmg:ScaleDamage(1)
 	end
 end
 end)
