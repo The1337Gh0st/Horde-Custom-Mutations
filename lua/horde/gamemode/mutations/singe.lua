@@ -9,7 +9,9 @@ MUTATION.Hooks.Horde_OnSetMutation = function(ent, mutation)
         local c = ent:GetColor()
     --    ent:SetColor(Color(125, 50, 50))
 		ent:SetMaterial("models/flesh")
+		if SERVER then
         ent:Ignite(9999999)
+		end
     end
 end
 
@@ -29,4 +31,7 @@ end)
 
 MUTATION.Hooks.Horde_OnUnsetMutation = function (ent, mutation)
     if not ent:IsValid() or mutation ~= "singe" then return end
+	if SERVER then
+        ent:Ignite(0)
+		end
 end
